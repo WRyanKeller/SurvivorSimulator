@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Player : IPlayer {
+    public class Player : IPlayer {
         public string Name {
             get;
         }

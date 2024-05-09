@@ -5,18 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal interface ISeason {
+    public interface ISeason {
         public int Number { get; }
         public string Location { get; }
         public string Theme { get; }
         public string Title { get; }
 
+        public int TribesLeft { get; }
+        public IList<ITribe> Tribes { get; }
+
         public int PlayersLeft { get; }
-        public IReadOnlyList<IPlayer> AllPlayers { get; }
-        public IReadOnlyList<IPlayer> StillIn { get; }
-        public IReadOnlyList<IPlayer> VotedOut { get; }
-        public IReadOnlyList<IPlayer> Jury { get; }
-        public IReadOnlyList<IPlayer> Finalists { get; }
+        public IList<IPlayer> AllPlayers { get; }
+        public IList<IPlayer> StillIn { get; }
+        public IList<IPlayer> VotedOut { get; }
+        public IList<IPlayer> Jury { get; }
+        public IList<IPlayer> Finalists { get; }
         public IPlayer? Winner { get; }
     }
 }
