@@ -113,5 +113,9 @@ namespace ConsoleApp1 {
                 m_tribes.Add(new Tribe("Tunk", roster));
             }
         }
+
+        public void Update() {
+
+        }
     }
 }

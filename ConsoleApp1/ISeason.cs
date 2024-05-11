@@ -21,5 +21,7 @@ namespace ConsoleApp1 {
         public IList<IPlayer> Jury { get; }
         public IList<IPlayer> Finalists { get; }
         public IPlayer? Winner { get; }
+
+        public void Update();
     }
 }
