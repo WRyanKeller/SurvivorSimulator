@@ -48,6 +48,9 @@ namespace ConsoleApp1 {
             {6, 4},
         };
 
+        private SeasonState m_seasonState;
+        private GameState m_gameState;
+
         private List<ITribe> m_tribes;
 
         private List<IPlayer> m_allPlayers;
@@ -112,10 +115,88 @@ namespace ConsoleApp1 {
             foreach (List<IPlayer> roster in tribeRosters) {
                 m_tribes.Add(new Tribe("Tunk", roster));
             }
+
+            m_seasonState = SeasonState.Intro;
         }
 
-        public void Update() {
+        public void Update(string? input) {
+            switch (m_gameState) {
+                case GameState.Intro:
+                    if (input != null) { return; }
+                    m_gameState = GameState.PreChallenge;
+                    break;
 
+                case GameState.Recap:
+                    break;
+
+                case GameState.PreChallenge:
+                    break;
+
+                case GameState.Challenge:
+                    break;
+
+                case GameState.PostChallenge:
+                    break;
+
+                case GameState.PreTribal:
+                    break;
+
+                case GameState.Tribal:
+                    break;
+
+                case GameState.PostTribal:
+                    break;
+
+                case GameState.FinalJury:
+                    break;
+
+                case GameState.Winner:
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public string? Display() {
+            string? result = null;
+            Console.WriteLine("Press [Enter] to continue");
+            switch (m_gameState) {
+                case GameState.Intro:
+                    result = Console.ReadLine();
+                    break;
+
+                case GameState.Recap:
+                    break;
+
+                case GameState.PreChallenge:
+                    break;
+
+                case GameState.Challenge:
+                    break;
+
+                case GameState.PostChallenge:
+                    break;
+
+                case GameState.PreTribal:
+                    break;
+
+                case GameState.Tribal:
+                    break;
+
+                case GameState.PostTribal:
+                    break;
+
+                case GameState.FinalJury:
+                    break;
+
+                case GameState.Winner:
+                    break;
+
+                default:
+                    break;
+            }
+            return result;
         }
     }
 }

@@ -22,6 +22,7 @@ namespace ConsoleApp1 {
         public IList<IPlayer> Finalists { get; }
         public IPlayer? Winner { get; }
 
-        public void Update();
+        public void Update(string? input);
+        public string? Display();
     }
 }

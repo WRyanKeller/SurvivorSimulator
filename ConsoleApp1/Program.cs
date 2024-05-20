@@ -4,7 +4,7 @@ namespace ConsoleApp1
 {
     public enum MenuState {
         Title,
-        NewSeason,
+        SeasonSetup,
         MidSeason,
         PostSeason,
     }
@@ -55,19 +55,24 @@ namespace ConsoleApp1
                 case MenuState.Title:
                     if (m_input == null) { return; }
                     Season = new Season(1, "Nevada");
-                    State = MenuState.NewSeason;
+                    State = MenuState.SeasonSetup;
                     break;
 
-                case MenuState.NewSeason:
+                case MenuState.SeasonSetup:
                     if (m_input == null) { return; }
                     State = MenuState.MidSeason;
                     break;
 
                 case MenuState.MidSeason:
-                    Season!.Update();
+                    Season!.Update(m_input);
+                    if (Season.Winner != null) {
+                        State = MenuState.PostSeason;
+                    }
                     break;
 
                 case MenuState.PostSeason:
+                    if (m_input == null) { return; }
+                    Season = null;
                     break;
 
                 // shouldn't happen?
@@ -84,19 +89,14 @@ namespace ConsoleApp1
                     result = Console.ReadLine();
                     break;
 
-                case MenuState.NewSeason:
-                    Console.WriteLine($"Welcome to {Season!.Title}!");
-                    Console.WriteLine("\nOur contestants are:");
-                    DisplayHelper.PrintNumberedList(Season.AllPlayers);
-                    Console.WriteLine("\nOur tribes are:");
-                    DisplayHelper.PrintTribes(Season.Tribes);
-                    Console.WriteLine("Press [Enter] to continue");
+                case MenuState.SeasonSetup:
                     result = Console.ReadLine();
                     break;
 
                 case MenuState.MidSeason:
+                    result = Season!.Display();
                     break;
-
+                    
                 case MenuState.PostSeason:
                     break;
 
