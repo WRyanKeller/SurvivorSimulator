@@ -30,6 +30,12 @@ namespace ConsoleApp1 {
         Winner,
     }
 
+    public enum DisplayState {
+        Announcement,
+        Cutscene,
+        Info,
+    }
+
     public class Season : ISeason {
         private static Dictionary<int, int> minLookup = new Dictionary<int, int> {
             {1, 14},
@@ -50,6 +56,9 @@ namespace ConsoleApp1 {
 
         private SeasonState m_seasonState;
         private GameState m_gameState;
+
+        // display info
+        private DisplayState m_displayState;
 
         private List<ITribe> m_tribes;
 
@@ -122,7 +131,7 @@ namespace ConsoleApp1 {
         public void Update(string? input) {
             switch (m_gameState) {
                 case GameState.Intro:
-                    if (input != null) { return; }
+                    if (input == null) { return; }
                     m_gameState = GameState.PreChallenge;
                     break;
 
@@ -160,9 +169,10 @@ namespace ConsoleApp1 {
 
         public string? Display() {
             string? result = null;
-            Console.WriteLine("Press [Enter] to continue");
             switch (m_gameState) {
                 case GameState.Intro:
+                    Console.WriteLine($"Welcome to {Title}");
+                    Console.WriteLine("Press [Enter] to continue");
                     result = Console.ReadLine();
                     break;
 

@@ -54,12 +54,12 @@ namespace ConsoleApp1
             switch (State) {
                 case MenuState.Title:
                     if (m_input == null) { return; }
-                    Season = new Season(1, "Nevada");
                     State = MenuState.SeasonSetup;
                     break;
 
                 case MenuState.SeasonSetup:
                     if (m_input == null) { return; }
+                    Season = new Season(1, "Nevada");
                     State = MenuState.MidSeason;
                     break;
 
@@ -85,11 +85,12 @@ namespace ConsoleApp1
             string? result = null;
             switch (State) {
                 case MenuState.Title:
-                    Console.WriteLine("Press [Enter] to continue");
+                    Console.WriteLine("Press [Enter] to begin a season");
                     result = Console.ReadLine();
                     break;
 
                 case MenuState.SeasonSetup:
+                    Console.WriteLine("Press [Enter] to begin a season");
                     result = Console.ReadLine();
                     break;
 
